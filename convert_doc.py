@@ -36,27 +36,6 @@ def write_str_to_txt(input_str, txt_path):
     with open(txt_path, 'w', encoding='utf-8') as file:
         file.write(input_str)
 
-
-# def process_epub(input_path):
-#     """
-#     Convert a Epub file to a string.
-    
-#     Args:
-#     - input_path (str): Path to convert to string.
-#     """
-#     parsed = parser.from_file(input_path)
-#     content = parsed["content"]
-
-#     return content
-class HTMLFilter(HTMLParser):
-    """
-    Source: https://stackoverflow.com/a/55825140/1209004
-    """
-    text = ""
-    def handle_data(self, data):
-        self.text += data
-
-
 def process_epub(input_path):
     """
     Convert a Epub file to a string.
@@ -115,6 +94,7 @@ def process_docx(file_path):
     text = ""
     for paragraph in doc.paragraphs:
         text += paragraph.text + "\n"
+    
     return text
 
 def process_html(html_file_path):
@@ -173,9 +153,9 @@ def process_file(file_path, output_file):
 # filepath = input("Enter the input file path: ")
 # txt_file = input("Enter the output file path: ")
 
-filepath = "/home/nuttaphon/WorkFolder/ConvertDoc/src/orwell-animal-farm.epub"
+filepath = "/home/nuttaphon/WorkFolder/ConvertDoc/src/file-sample_100kB.docx"
 # txt_file = "/home/nuttaphon/WorkFolder/ConvertDoc/out/output.txt"
-output_file = "/home/nuttaphon/WorkFolder/ConvertDoc/out/output_orwell-animal-farm_epub2txt_clean.txt"
+output_file = "/home/nuttaphon/WorkFolder/ConvertDoc/out/file-sample_100kB.txt"
 
 process_file(filepath, output_file)
 
